@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Wealth Management | NJ Wealth Authorized Partner</title>
+    <title>Interactive Risk Profiler | Prajith PV</title>
     <style>
         :root {
             --primary: #0a3d62;
@@ -21,921 +21,429 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            scroll-behavior: smooth;
         }
 
         body {
-            color: var(--dark);
             background-color: var(--light);
-            line-height: 1.7;
+            color: var(--dark);
+            line-height: 1.6;
+            padding-bottom: 5rem;
         }
 
-        /* Header & Navigation */
+        /* Navigation Header */
         header {
             background-color: var(--white);
-            color: var(--primary);
-            padding: 1rem 5%;
+            padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
         }
 
         .logo {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--primary);
         }
 
-        .logo span {
-            color: var(--secondary);
-            font-weight: 400;
-            font-size: 0.9rem;
-            display: block;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--dark);
-            padding: 0.8rem 2rem;
-            border-radius: 30px;
+        .btn-back {
             text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-            background-color: #e5a928;
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-            margin-left: 10px;
-        }
-
-        .btn-outline:hover {
-            background-color: var(--white);
-            color: var(--primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(10, 61, 98, 0.95), rgba(60, 99, 130, 0.9)), 
-                        url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-            color: var(--white);
-            padding: 7rem 5%;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3.2rem;
-            margin-bottom: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0.9;
-        }
-
-        /* Layout Structure */
-        .container {
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-        }
-
-        h2 {
-            text-align: center;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 2.4rem;
-            font-weight: 700;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 3.5rem;
-            font-size: 1.1rem;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
-
-        /* Core Feature Cards */
-        .card {
-            background-color: var(--white);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.02);
-            text-align: center;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-        }
-
-        .card img.icon {
-            display: block;
-            max-width: 50px;
-            max-height: 50px;
-            margin: 0 auto 1.5rem auto;
-            opacity: 0.9;
-        }
-
-        .card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        /* Goal Investment Cards */
-        .goals-section {
-            background-color: #f1f5f9;
-        }
-
-        .goal-card {
-            background: var(--white);
-            border-left: 5px solid var(--accent);
-            text-align: left;
-        }
-        
-        .goal-card img.icon {
-            margin: 0 0 1.5rem 0;
-        }
-
-        /* EXPANDED DEEP-LEARNING BLOG ARCHITECTURE */
-        .blog-section {
-            background-color: #ffffff;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .blog-layout {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-
-        .blog-sidebar {
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-            background: var(--light);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .blog-sidebar h4 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 0.5rem;
-        }
-
-        .blog-menu-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .blog-nav-item {
-            width: 100%;
-            text-align: left;
-            background: transparent;
-            border: none;
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            color: var(--dark);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-            line-height: 1.3;
-        }
-
-        .blog-nav-item:hover {
-            background: #e2e8f0;
-            color: var(--primary);
-        }
-
-        .blog-nav-item.active {
-            background: var(--primary);
-            color: var(--white);
-            font-weight: 600;
-        }
-
-        .blog-main-content {
-            background: var(--white);
-            min-height: 500px;
-        }
-
-        .blog-article {
-            display: none;
-            animation: fadeIn 0.4s ease-in-out;
-        }
-
-        .blog-article.active {
-            display: block;
-        }
-
-        .blog-article h3 {
-            color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 0.75rem;
-            line-height: 1.3;
-        }
-
-        .blog-article h4 {
             color: var(--secondary);
-            font-size: 1.4rem;
-            margin: 2rem 0 1rem 0;
-        }
-
-        .blog-article p {
-            margin-bottom: 1.2rem;
-            font-size: 1.1rem;
-            color: #334155;
-            text-align: justify;
-        }
-
-        .blog-article ul, .blog-article ol {
-            margin-left: 2rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-            color: #334155;
-        }
-
-        .blog-article li {
-            margin-bottom: 0.6rem;
-        }
-
-        .highlight-box {
-            background: #f0fdf4;
-            border-left: 5px solid var(--success);
-            padding: 1.5rem;
-            border-radius: 4px;
-            margin: 1.5rem 0;
-        }
-
-        .alert-box {
-            background: #fffbeb;
-            border-left: 5px solid var(--accent);
-            padding: 1.5rem;
-            border-radius: 4px;
-            margin: 1.5rem 0;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Tables style layout */
-        .table-container {
-            overflow-x: auto;
-            margin: 2rem 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
-        }
-        th, td {
-            padding: 1.1rem;
-            text-align: left;
-            border-bottom: 1px solid #e2e8f0;
-            font-size: 0.95rem;
-        }
-        th {
-            background-color: var(--primary);
-            color: var(--white);
             font-weight: 600;
-        }
-        tr:nth-child(even) {
-            background-color: #f8fafc;
-        }
-
-        /* INTERACTIVE RISK PROFILER QUIZ */
-        .quiz-container {
-            background: var(--light);
-            padding: 2.5rem;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            margin-top: 2rem;
-        }
-        .quiz-question {
-            font-weight: 600;
-            font-size: 1.15rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-            margin-top: 1.5rem;
-        }
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 1.5rem;
-        }
-        .quiz-option {
-            background: var(--white);
-            border: 1px solid #cbd5e1;
-            padding: 1rem;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-align: left;
-            font-size: 1rem;
-        }
-        .quiz-option:hover {
-            background: #f1f5f9;
-            border-color: var(--secondary);
-        }
-        .quiz-option.selected {
-            background: var(--secondary);
-            color: var(--white);
-            border-color: var(--secondary);
-        }
-        #quiz-result {
-            margin-top: 1.5rem;
-            padding: 1.5rem;
-            border-radius: 8px;
-            font-weight: bold;
-            text-align: center;
-            display: none;
-            line-height: 1.5;
-        }
-
-        /* Advisor Trust Profile Section */
-        .advisor-section {
-            background-color: #f1f5f9;
-        }
-
-        .advisor-container {
             display: flex;
             align-items: center;
-            gap: 4rem;
-            background: var(--white);
-            padding: 3rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            gap: 5px;
+            transition: color 0.2s;
         }
 
-        .advisor-image {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--white);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            flex-shrink: 0;
-        }
-
-        .advisor-details h3 {
-            font-size: 1.8rem;
+        .btn-back:hover {
             color: var(--primary);
-            margin-bottom: 0.2rem;
         }
 
-        .advisor-title {
-            color: var(--secondary);
-            font-weight: 600;
+        /* Quiz Layout Container */
+        .quiz-wrapper {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .quiz-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .quiz-intro h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
             margin-bottom: 1rem;
+        }
+
+        .quiz-intro p {
+            color: #64748b;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Card Framework for Questions */
+        .question-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
+        }
+
+        .question-number {
+            color: var(--accent);
+            font-weight: 700;
             text-transform: uppercase;
             font-size: 0.85rem;
             letter-spacing: 1px;
+            margin-bottom: 0.5rem;
         }
 
-        .arn-badge {
-            display: inline-block;
-            background: var(--primary);
-            color: var(--white);
-            padding: 0.3rem 1rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
+        .question-text {
+            font-size: 1.3rem;
+            color: var(--primary);
             font-weight: 600;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
         }
 
-        /* Call To Action */
-        .cta-section {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--white);
-            text-align: center;
-            padding: 6rem 2rem;
-        }
-
-        .cta-section h2 { color: var(--white); }
-        .cta-section p {
-            margin-bottom: 2.5rem;
-            font-size: 1.2rem;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0.9;
-        }
-
-        /* Floating WhatsApp Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--success);
-            color: white;
-            border-radius: 50px;
-            text-align: center;
-            padding: 12px 25px;
-            font-weight: bold;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            z-index: 999;
+        /* Option Buttons styling */
+        .options-list {
             display: flex;
-            align-items: center;
-            gap: 8px;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            background: var(--white);
+            border: 2px solid #e2e8f0;
+            padding: 1.1rem 1.5rem;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            color: #334155;
+            transition: all 0.2s ease;
+        }
+
+        .option-btn:hover {
+            background: #f8fafc;
+            border-color: var(--secondary);
+        }
+
+        .option-btn.selected {
+            background: #f0f7ff;
+            border-color: var(--primary);
+            color: var(--primary);
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(10, 61, 98, 0.05);
+        }
+
+        /* Action Buttons */
+        .action-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .btn-submit {
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 1rem 3rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
 
-        .whatsapp-float:hover {
-            transform: scale(1.05);
-            background-color: #27ae60;
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            background-color: #e5a928;
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: var(--white);
-            text-align: center;
-            padding: 3rem 2rem;
+        /* Dynamic Result Blocks */
+        .result-box {
+            display: none;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-top: 2rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+            animation: slideUp 0.4s ease-in-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-title {
+            font-size: 2.2rem;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .result-description {
+            font-size: 1.1rem;
+            color: #475569;
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        .allocation-tag {
+            display: inline-block;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-right: 10px;
+            margin-bottom: 10px;
             font-size: 0.9rem;
         }
 
-        .disclaimer {
-            margin-top: 1.5rem;
-            opacity: 0.5;
-            font-size: 0.75rem;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1.5rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 912px) {
-            .blog-layout { grid-template-columns: 1fr; gap: 2rem; }
-            .blog-sidebar { position: relative; top: 0; width: 100%; }
+        .error-message {
+            color: #ef4444;
+            background: #fef2f2;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            display: none;
+            text-align: center;
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .hero p { font-size: 1.1rem; }
-            .advisor-container { flex-direction: column; text-align: center; padding: 2rem; }
-            .grid { grid-template-columns: 1fr; }
-            header { flex-direction: column; gap: 1rem; text-align: center; }
-            .whatsapp-float { bottom: 20px; right: 20px; padding: 10px 18px; font-size: 0.9rem; }
+            .quiz-intro h1 { font-size: 2rem; }
+            .question-card { padding: 1.5rem; }
+            .result-box { padding: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
+    <!-- Navigation Header -->
     <header>
-        <div class="logo">
-            PRAJITH PV
-            <span>Authorized NJ Wealth Distributor</span>
-        </div>
-        <a href="tel:+917994653546" class="btn" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Call Advisor</a>
+        <div class="logo">PRAJITH PV | Risk Profiler</div>
+        <a href="index.html" class="btn-back">← Back to Home</a>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Don't Just Save Your Money. Multiply It.</h1>
-        <p>Stop letting inflation eat your hard-earned savings. Invest in expert-managed Mutual Funds through India's premier wealth tech platform.</p>
-        <a href="https://www.njwebdesk.in/ClientDesk/index.aspx?pcode=YOUR_NJ_WEALTH_ID" target="_blank" class="btn">Open Free Investment Account</a>
-        <a href="#blogs-section" class="btn btn-outline">Read Investor Blogs</a>
-    </section>
-
-    <!-- Why Mutual Funds Section -->
-    <section id="benefits" class="container">
-        <h2>Why Shift to Mutual Funds?</h2>
-        <p class="section-subtitle">Traditional savings routes fall short. Here is why the modern market relies on Mutual Funds.</p>
-        <div class="grid">
-            <div class="card">
-                <img src="https://img.icons8.com/fluency/96/inflation.png" alt="Inflation Icon" class="icon">
-                <h3>Beat High Inflation</h3>
-                <p>Idle cash loses purchasing power daily. Well-allocated equity and debt Mutual Funds aim for historic compounding returns that systematically defeat inflation over time.</p>
-            </div>
-            <div class="card">
-                <img src="https://img.icons8.com/fluency/96/pie-chart-report.png" alt="Diversification Icon" class="icon">
-                <h3>True Diversification</h3>
-                <p>Never put all your eggs in one basket. One single mutual fund spreads your money across dozens of India’s top companies, keeping your overall risk well-managed.</p>
-            </div>
-            <div class="card">
-                <img src="https://img.icons8.com/fluency/96/manager.png" alt="Expert Icon" class="icon">
-                <h3>Managed by Pros</h3>
-                <p>You don't need to watch complex stock tickers all day. Elite, certified fund managers handle the constant balancing, market analytics, and strategy execution for you.</p>
-            </div>
+    <div class="quiz-wrapper">
+        <div class="quiz-intro">
+            <h1>Discover Your Investor DNA</h1>
+            <p>Answer these 6 institutional-grade allocation questions to see which mutual fund strategies match your psychology, timeline, and goals.</p>
         </div>
-    </section>
 
-    <!-- EXPANDED DETAILED BLOGS SECTION -->
-    <section id="blogs-section" class="blog-section">
-        <div class="container" style="padding-bottom: 2rem;">
-            <h2>Investor Knowledge Hub & Blogs</h2>
-            <p class="section-subtitle">Deep educational resources built to help you master market concepts, evaluate risks, and structure allocations logically.</p>
+        <div id="error-box" class="error-message">⚠️ Please pick an option for every single question before calculating your profile.</div>
+
+        <form id="risk-quiz-form">
             
-            <div class="blog-layout">
-                <!-- Blog Navigation Sidebar -->
-                <aside class="blog-sidebar">
-                    <h4>Select Study Guide</h4>
-                    <nav class="blog-menu-list">
-                        <button class="blog-nav-item active" onclick="switchArticle(0)">1. Core Fund Mechanics</button>
-                        <button class="blog-nav-item" onclick="switchArticle(1)">2. The Real Inflation Trap</button>
-                        <button class="blog-nav-item" onclick="switchArticle(2)">3. Evaluating Asset Classes</button>
-                        <button class="blog-nav-item" onclick="switchArticle(3)">4. Income & Age Matrices</button>
-                        <button class="blog-nav-item" onclick="switchArticle(4)">5. DIY vs. Advisor Route</button>
-                        <button class="blog-nav-item" onclick="switchArticle(5)">6. Interactive Risk Quiz</button>
-                    </nav>
-                </aside>
-
-                <!-- Blog Main Content Dynamic Container -->
-                <main class="blog-main-content">
-                    
-                    <!-- Article 1 -->
-                    <article class="blog-article active">
-                        <h3>Chapter 1: The Core Mechanics of Mutual Fund Wealth Compounding</h3>
-                        <p>At its foundational roots, a Mutual Fund is an institutionally monitored financial trust. It collects fractional savings from thousands of individual investors to form one massive pool of capital. This unified resource is managed by a licensed Asset Management Company (AMC) and run by expert Fund Managers.</p>
-                        <p>Instead of trying to buy expensive individual corporate stocks or government bonds on your own, your money buys fractional units of a highly diversified portfolio setup. The pricing of these units is governed entirely by the fund's **Net Asset Value (NAV)**, which represents the daily market valuation of the underlying securities minus structural operational expenses.</p>
-                        
-                        <h4>How Your Wealth Actually Grows Over Time:</h4>
-                        <ul>
-                            <li><strong>Capital Gains Growth:</strong> As India's top industries generate larger profits, their stock prices go up. This causes the total value of the fund to rise, pushing your individual holdings and NAV higher.</li>
-                            <li><strong>Automatic Dividend & Coupon Reinvestment:</strong> Cash flow coming from stock dividends or debt interest tokens is automatically cycled back into buying additional equity shares, creating a self-reinforcing loop of wealth creation.</li>
-                            <li><strong>The Mathematical Magic of Compounding:</strong> Returns in mutual funds are non-linear. This means you earn returns on your original principal, and then you earn returns *on top of those returns* year after year.</li>
-                        </ul>
-                        
-                        <div class="highlight-box">
-                            <strong>The True SIP Blueprint:</strong> Investing just <strong>₹5,000 every month</strong> via a Systematic Investment Plan (SIP) over 25 years totals an out-of-pocket accumulation of ₹15,00,000. At an expected long-term equity growth rate of 12% per year, compounding expands that balance into an estimated **₹94.8 Lakhs**. This proves that time spent remaining consistent in the market matters much more than trying to perfectly time its short-term highs and lows.
-                        </div>
-                    </article>
-
-                    <!-- Article 2 -->
-                    <article class="blog-article">
-                        <h3>Chapter 2: The Hidden Trap of Inflation & Purchasing Power Degradation</h3>
-                        <p>Many investors feel safe keeping all their hard-earned money in a traditional savings bank account or locked away in standard physical lockers. However, this safety is an illusion caused by a silent financial danger: **Inflation**.</p>
-                        <p>Inflation is the steady increase in consumer prices over time, which reduces the real buying power of your money. If the cost of goods and services grows by 6% every year, a ₹100 note will buy significantly less a decade from now. Your account balance looks exactly the same on paper, but your real-world wealth is shrinking.</p>
-                        
-                        <h4>The Mathematical Reality of Stagnant Capital:</h4>
-                        <p>Let's see what happens to a fixed cash reserve of <strong>₹10,000</strong> left inside a standard vault over time, assuming a steady 6% annual inflation rate:</p>
-                        <ul>
-                            <li><strong>After 10 Years:</strong> Your buying power drops to just <strong>₹5,584</strong>.</li>
-                            <li><strong>After 20 Years:</strong> Your buying power drops down further to <strong>₹3,118</strong>.</li>
-                            <li><strong>After 30 Years:</strong> Your money loses most of its value, leaving you with only <strong>₹1,741</strong> in real purchasing power.</li>
-                        </ul>
-
-                        <div class="alert-box">
-                            <strong>The Real Goal of Investing:</strong> To actually grow your wealth, your investments must earn a return that is higher than both the inflation rate and income taxes combined. If your savings channel gives you a 4% yield while inflation is running at 6%, your real money value is actually dropping by 2% every single year.
-                        </div>
-                    </article>
-
-                    <!-- Article 3 -->
-                    <article class="blog-article">
-                        <h3>Chapter 3: Evaluating Asset Classes — Finding the Right Balance</h3>
-                        <p>To secure your financial future, you need to understand how different asset classes work. Every investment tool behaves differently depending on changing market conditions. Spreading your capital across the right mix of assets helps you capture growth while managing overall portfolio risk.</p>
-                        
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Asset Framework Type</th>
-                                        <th>Expected Long-Term Return Range</th>
-                                        <th>Liquidity Access Speed</th>
-                                        <th>Primary Risk Factor Profile</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><strong>Equity Mutual Funds</strong></td>
-                                        <td>12% - 15% (High Growth)</td>
-                                        <td>High (2-3 open business days)</td>
-                                        <td>Short-term market volatility and price drops.</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Fixed Deposits / Debt</strong></td>
-                                        <td>5% - 7% (Low/Stable)</td>
-                                        <td>Moderate (Early penalty risks apply)</td>
-                                        <td>Loses long-term value to high inflation rates.</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Physical Real Estate</strong></td>
-                                        <td>8% - 10% (Variable)</td>
-                                        <td>Very Low (Takes months/years to sell)</td>
-                                        <td>Requires very large upfront capital; highly illiquid.</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Gold & Precious Metals</strong></td>
-                                        <td>7% - 9% (Safe Haven)</td>
-                                        <td>High (If digital/paper format)</td>
-                                        <td>Can experience long periods of flat or stagnant prices.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <p>Instead of trying to buy these assets individually on your own, **Multi-Asset & Hybrid Mutual Funds** allow you to access a diversified blend of all these asset types through a single investment. This balanced approach protects your capital during market corrections while ensuring you still benefit from long-term equity growth.</p>
-                    </article>
-
-                    <!-- Article 4 -->
-                    <article class="blog-article">
-                        <h3>Chapter 4: Income Allocation Models & Lifespan Target Matrix</h3>
-                        <p>Successful financial planning depends heavily on budget discipline. No matter how much money you earn each month, setting up an automatic investment plan early is the absolute key to building lasting wealth.</p>
-                        
-                        <h4>1. Strategic SIP Allocation Model by Monthly Income Tier</h4>
-                        <p>Here is a practical guide showing how much you should aim to invest based on your net monthly take-home income:</p>
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Net Monthly Income Bracket</th>
-                                        <th>Target Monthly SIP Focus</th>
-                                        <th>Primary Portfolio Objective</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>₹20,000 - ₹40,000</td>
-                                        <td>₹2,000 - ₹5,000</td>
-                                        <td>Building baseline financial discipline and setting up emergency safety accounts.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>₹50,000 - ₹90,000</td>
-                                        <td>₹7,000 - ₹15,000</td>
-                                        <td>Targeting wealth growth via diversified Large-cap and Flexi-cap portfolios.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>₹1,00,000 - ₹1,80,000</td>
-                                        <td>₹20,000 - ₹40,000</td>
-                                        <td>Aggressive expansion across mid-cap, small-cap, and tax-saving options.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>₹2,00,000 and Above</td>
-                                        <td>₹50,000+</td>
-                                        <td>Comprehensive multi-asset wealth maximization and advanced capital structures.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <h4>2. Portfolio Needs Across Different Life Stages:</h4>
-                        <ul>
-                            <li><strong>Young Professionals (Ages 22-30):</strong> You have time on your side. With fewer family responsibilities, you can focus on high-growth options like Flexi-Cap, Mid-Cap, and thematic equity strategies.</li>
-                            <li><strong>Established Families (Ages 31-50):</strong> Balancing complex responsibilities. Your plan should focus on target milestones, such as clear timelines for children's higher education, paying off home loans, and saving on taxes with ELSS funds.</li>
-                            <li><strong>Pre-Retirement & Senior Citizens (Ages 51+):</strong> Protecting your hard-earned wealth becomes the top priority. Your strategy should move away from high-volatility equities and focus on stable Hybrid models, conservative debt strategies, and Systematic Withdrawal Plans (SWP) for steady, reliable monthly cash flow.</li>
-                        </ul>
-                    </article>
-
-                    <!-- Article 5 -->
-                    <article class="blog-article">
-                        <h3>Chapter 5: Direct Execution Apps vs. Partnering With an AMFI Advisor</h3>
-                        <p>Modern mobile phone applications make it incredibly easy to start a "Direct" mutual fund investment with just a few quick taps. This ease of use often convinces self-directed investors that they no longer need professional advice. However, there is a big difference between using a transaction app and executing a real, long-term financial plan.</p>
-                        <p>Direct mutual funds do have lower internal expense ratios because they don't pay distributor commissions. While this sounds like an easy way to save money, it requires you to act entirely as your own expert financial planner, market analyst, and behavioral coach.</p>
-
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Operational Challenge</th>
-                                        <th>The DIY Mobile App Reality</th>
-                                        <th>Partnering with an AMFI Advisor / Distributor</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><strong>Fund Selection Strategy</strong></td>
-                                        <td>People often chase short-term past performance metrics blindly.</td>
-                                        <td>We choose funds based on risk adjusted ratios, performance history across market cycles, and consistency.</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Portfolio Rebalancing</strong></td>
-                                        <td>Often completely ignored, leaving portfolios off-track.</td>
-                                        <td>Regular tracking ensures assets are rebalanced to lock in profits safely.</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Behavioral Protection</strong></td>
-                                        <td>It is easy to panic and sell everything during sharp market drops.</td>
-                                        <td>Provides clear guidance to stop emotional panic and keep you invested.</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Claims and Logistics</strong></td>
-                                        <td>Your family has to navigate tricky documentation completely alone.</td>
-                                        <td>Full support for updating nominees, handling documentation, and smooth inheritance.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <p><strong>The Strategic Reality:</strong> The small savings from a direct fund expense ratio can easily be wiped out by a single bad emotional decision—like panicking during a temporary market correction and selling your investments at a loss. An experienced advisor helps keep your plan steady, rational, and aligned with your long-term goals.</p>
-                    </article>
-
-                    <!-- Article 6 -->
-                    <article class="blog-article">
-                        <h3>Chapter 6: Interactive Investor Risk Profiler</h3>
-                        <p>Before deploying capital into the markets, you must map your exact risk tolerance baseline. Take this interactive 3-step test to learn your ideal asset profile:</p>
-                        
-                        <div class="quiz-container">
-                            <!-- Q1 -->
-                            <div class="quiz-question">1. If your investment values decline by 10% during a sudden market correction, what is your initial reaction?</div>
-                            <div class="quiz-options">
-                                <button class="quiz-option" onclick="selectOption(this, 1, 'conservative')">Panic immediately and liquidate assets to stop further loss.</button>
-                                <button class="quiz-option" onclick="selectOption(this, 1, 'moderate')">Keep the position active and wait calmly for market recovery.</button>
-                                <button class="quiz-option" onclick="selectOption(this, 1, 'aggressive')">View it as a discount window and aggressively deploy more capital.</button>
-                            </div>
-
-                            <!-- Q2 -->
-                            <div class="quiz-question">2. Which investment philosophy best describes your financial goal?</div>
-                            <div class="quiz-options">
-                                <button class="quiz-option" onclick="selectOption(this, 2, 'conservative')">Absolute safety of capital is my highest priority.</button>
-                                <button class="quiz-option" onclick="selectOption(this, 2, 'moderate')">A balanced mix of steady security and moderate growth.</button>
-                                <button class="quiz-option" onclick="selectOption(this, 2, 'aggressive')">Maximum long-term compounding, accepting short-term volatility.</button>
-                            </div>
-
-                            <!-- Q3 -->
-                            <div class="quiz-question">3. What is your ideal investment time horizon for this capital?</div>
-                            <div class="quiz-options">
-                                <button class="quiz-option" onclick="selectOption(this, 3, 'conservative')">Short term: Under 2 years.</button>
-                                <button class="quiz-option" onclick="selectOption(this, 3, 'moderate')">Medium term: Between 3 to 5 years.</button>
-                                <button class="quiz-option" onclick="selectOption(this, 3, 'aggressive')">Long term: Beyond 7 to 10+ years.</button>
-                            </div>
-
-                            <button class="btn" style="width: 100%; margin-top: 1rem;" onclick="calculateRiskProfile()">Calculate My Risk Profile</button>
-                            
-                            <div id="quiz-result"></div>
-                        </div>
-                    </article>
-
-                </main>
-            </div>
-        </div>
-    </section>
-
-    <!-- Goal Based Investing Section -->
-    <section class="goals-section">
-        <div class="container">
-            <h2>Invest For What Matters Most</h2>
-            <p class="section-subtitle">Don't invest blindly. Align your money with your clear, real-world life goals using simple SIPs.</p>
-            <div class="grid">
-                <div class="card goal-card">
-                    <img src="https://img.icons8.com/fluency/96/beach-umbrella.png" alt="Retirement Icon" class="icon">
-                    <h3>Secure Retirement</h3>
-                    <p>Build an independent, stress-free corpus so you can maintain your comfortable lifestyle without relying on anyone during your golden years.</p>
-                </div>
-                <div class="card goal-card">
-                    <img src="https://img.icons8.com/fluency/96/graduation-cap.png" alt="Education Icon" class="icon">
-                    <h3>Child Education & Marriage</h3>
-                    <p>Be ready for soaring higher education costs globally. Start an early SIP to fund your child's major career dreams stress-free.</p>
-                </div>
-                <div class="card goal-card">
-                    <img src="https://img.icons8.com/fluency/96/piggy-bank.png" alt="Piggy Bank Tax Saving Icon" class="icon">
-                    <h3>Smart Tax Saving (ELSS)</h3>
-                    <p>Save substantial taxes legally under Section 80C while simultaneously growing your wealth via equity markets with the shortest lock-in period available.</p>
+            <!-- Question 1 -->
+            <div class="question-card">
+                <div class="question-number">Question 1</div>
+                <div class="question-text">What is your primary investment time frame for this specific pool of money?</div>
+                <div class="options-list">
+                    <button type="button" class="option-btn" data-q="1" data-score="1">Short Term: Less than 2 years</button>
+                    <button type="button" class="option-btn" data-q="1" data-score="2">Medium Term: 3 to 5 years</button>
+                    <button type="button" class="option-btn" data-q="1" data-score="3">Long Term: 5 to 10 years</button>
+                    <button type="button" class="option-btn" data-q="1" data-score="4">Very Long Term: Over 10 years</button>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Trust / Biography Section -->
-    <section class="advisor-section container">
-        <h2>Your Trusted Financial Partner</h2>
-        <p class="section-subtitle">Investing isn't just about platforms; it's about reliable guidance.</p>
-        <div class="advisor-container">
-            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80" alt="PRAJITH PV Portrait" class="advisor-image">
-            <div class="advisor-details">
-                <h3>PRAJITH PV</h3>
-                <div class="advisor-title">Mutual Fund Consultant & Wealth Management Expert</div>
-                <div class="arn-badge">AMFI Registered ARN: YOUR_ARN_NUMBER_HERE</div>
-                <p>As an authorized NJ Wealth Partner, I focus on helping families, professionals, and businesses achieve concrete financial freedom. Guided by structural AMFI framework ethics, my mission is to prevent emotional panic during market highs or market lows, ensuring your financial plan stays on track.</p>
+            <!-- Question 2 -->
+            <div class="question-card">
+                <div class="question-number">Question 2</div>
+                <div class="question-text">What is the core target objective you expect this portfolio to achieve?</div>
+                <div class="options-list">
+                    <button type="button" class="option-btn" data-q="2" data-score="1">Capital Preservation: I cannot afford to lose my core principal amount.</button>
+                    <button type="button" class="option-btn" data-q="2" data-score="2">Income Generation: Regular, steady payouts with minimal fluctuations.</button>
+                    <button type="button" class="option-btn" data-q="2" data-score="3">Balanced Growth: Beating inflation while keeping moderate stability.</button>
+                    <button type="button" class="option-btn" data-q="2" data-score="4">Aggressive Compounding: Maximizing long-term wealth, ignoring short-term drops.</button>
+                </div>
             </div>
+
+            <!-- Question 3 -->
+            <div class="question-card">
+                <div class="question-number">Question 3</div>
+                <div class="question-text">If equity markets hit a sudden correction and your portfolio value drops by 20%, what would your immediate choice be?</div>
+                <div class="options-list">
+                    <button type="button" class="option-btn" data-q="3" data-score="1">Panic and withdraw all remaining cash immediately to protect what is left.</button>
+                    <button type="button" class="option-btn" data-q="3" data-score="2">Move money out into safer assets like Fixed Deposits or Liquid Funds.</button>
+                    <button type="button" class="option-btn" data-q="3" data-score="3">Do absolutely nothing and wait patiently for the market cycle to recover.</button>
+                    <button type="button" class="option-btn" data-q="3" data-score="4">Treat it as a massive discount sale and aggressively buy more units via top SIPs.</button>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-card">
+                <div class="question-number">Question 4</div>
+                <div class="question-text">Which scenario best describes your personal history and experience with financial market volatility?</div>
+                <div class="options-list">
+                    <button type="button" class="option-btn" data-q="4" data-score="1">None: I have only kept money in traditional bank savings and fixed deposits.</button>
+                    <button type="button" class="option-btn" data-q="4" data-score="2">Low: I have a small amount in stable debt tools or conservative accounts.</button>
+                    <button type="button" class="option-btn" data-q="4" data-score="3">Moderate: I understand how mutual funds work and currently run SIPs.</button>
+                    <button type="button" class="option-btn" data-q="4" data-score="4">Extensive: I actively track equity markets, stocks, and macro cycles.</button>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-card">
+                <div class="question-number">Question 5</div>
+                <div class="question-text">How would you describe the security and predictability of your primary monthly household income source?</div>
+                <div class="options-list">
+                    <button type="button" class="option-btn" data-q="5" data-score="1">Highly Vulnerable: Fluctuating or unpredictable income patterns.</button>
+                    <button type="button" class="option-btn" data-q="5" data-score="2">Somewhat Stable: Secure for now, but changes could happen over the next year.</button>
+                    <button type="button" class="option-btn" data-q="5" data-score="3">Stable: Reliable salary or professional fees from an established source.</button>
+                    <button type="button" class="option-btn" data-q="5" data-score="4">Extremely Secure: Backed by significant passive income or highly secure setups.</button>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question-card">
+                <div class="question-number">Question 6</div>
+                <div class="question-text">Balancing Risk vs. Reward: Which hypothetical asset mix feels most comfortable to your personal psychology?</div>
+                <div class="options-list">
+                    <button type="button" class="option-btn" data-q="6" data-score="1">70% Stable Debt / 30% Gold (Focusing entirely on absolute security)</button>
+                    <button type="button" class="option-btn" data-q="6" data-score="2">50% Arbitrage / 30% Debt / 20% Large-Cap Equities (Conservative balance)</button>
+                    <button type="button" class="option-btn" data-q="6" data-score="3">60% Diversified Equities / 30% Corporate Debt / 10% Gold (True asset balance)</button>
+                    <button type="button" class="option-btn" data-q="6" data-score="4">100% Focused Equities via Mid & Small Cap allocations (Maximum growth focus)</button>
+                </div>
+            </div>
+
+            <div class="action-container">
+                <button type="button" class="btn-submit" onclick="evaluateQuiz()">Process My Investor Profile</button>
+            </div>
+        </form>
+
+        <!-- Results Block Display -->
+        <div id="result-display" class="result-box">
+            <div class="result-header">Your Official Evaluation Result</div>
+            <div id="profile-title" class="result-title">Calculating Profile...</div>
+            <div id="profile-desc" class="result-description"></div>
+            
+            <div style="margin-bottom: 1.5rem; font-weight: 700; color: var(--primary);">Recommended Blueprint Framework:</div>
+            <div id="allocation-tags-container"></div>
+
+            <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0;">
+            <p style="font-size: 0.95rem; color: #64748b; margin-bottom: 1.5rem;">
+                *This automated assessment evaluates baseline psychological risk parameters. To securely deploy your capital, connect directly with your distributor via WhatsApp to map these results out in detail.
+            </p>
+            <a id="whatsapp-share-btn" href="#" target="_blank" class="btn-submit" style="text-decoration: none; display: inline-block; background-color: var(--success); color: white;">
+                Share Results with Prajith via WhatsApp
+            </a>
         </div>
-    </section>
+    </div>
 
-    <!-- Final Call to Action -->
-    <section class="cta-section">
-        <h2>Take Control of Your Future Today</h2>
-        <p>Onboard effortlessly in less than 5 minutes. Track your complete financial portfolio, investments, and capital completely online.</p>
-        <a href="https://www.njwebdesk.in/ClientDesk/index.aspx?pcode=YOUR_NJ_WEALTH_ID" target="_blank" class="btn" style="font-size: 1.2rem; padding: 1rem 3rem;">Get Your Onboarding Link</a>
-    </section>
-
-    <!-- Floating WhatsApp Link Button -->
-    <a href="https://wa.me/917994653546?text=Hi%20Prajith,%20I've%20visited%20your%20website%20and%20want%20to%20know%20more%20about%20starting%20a%20Mutual%20Fund%20investment." class="whatsapp-float" target="_blank">
-        <svg style="width:20px; height:20px; fill:currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.966 0c3.178.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.239 3.48 8.421-.003 6.615-5.34 11.962-11.909 11.962-2.005-.001-3.973-.507-5.729-1.474L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.747 1.451 5.436 0 9.86-4.413 9.863-9.84.001-2.63-1.019-5.101-2.871-6.957C16.478 1.952 14.023 1.3 11.968 1.3c-5.438 0-9.863 4.414-9.866 9.84-.001 1.677.452 3.315 1.312 4.742L2.39 20.354l4.257-1.2z"/></svg>
-        Chat on WhatsApp
-    </a>
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 PRAJITH PV. All Rights Reserved.</p>
-        <p style="margin-top: 0.3rem; opacity: 0.7;">NJ Wealth Authorized Network Partner | Office Location: India</p>
-        <div class="disclaimer">
-            <strong>Statutory Risk Disclaimer:</strong> Mutual Fund investments are subject to market risks. Please read all scheme-related instructions, offer documents, and terms carefully before dedicating capital. Past historical performance metrics do not offer concrete guarantees of equivalent future yields.
-        </div>
-    </footer>
-
-    <!-- INTERACTIVE SCRIPTS ENGINE -->
+    <!-- JAVASCRIPT ENGINE -->
     <script>
-        // Tab Article Switcher Engine
-        function switchArticle(index) {
-            // Get all articles and navigation buttons
-            const articles = document.getElementsByClassName("blog-article");
-            const navItems = document.getElementsByClassName("blog-nav-item");
+        const answers = {};
 
-            // Deactivate everything
-            for (let i = 0; i < articles.length; i++) {
-                articles[i].classList.remove("active");
-                navItems[i].classList.remove("active");
-            }
+        // Track and highlight options click choices
+        document.querySelectorAll('.option-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const qNum = this.getAttribute('data-q');
+                const score = parseInt(this.getAttribute('data-score'));
 
-            // Activate chosen items
-            articles[index].classList.add("active");
-            navItems[index].classList.add("active");
-        }
+                // Remove selection look from sibling buttons inside this group
+                this.parentElement.querySelectorAll('.option-btn').forEach(btn => {
+                    btn.classList.remove('selected');
+                });
 
-        // Quiz Selection Tracking Engine
-        var selectedScores = {};
+                // Set selection look
+                this.classList.add('selected');
+                answers[qNum] = score;
 
-        function selectOption(button, questionNum, profileValue) {
-            var options = button.parentElement.getElementsByClassName("quiz-option");
-            for(var i=0; i<options.length; i++) {
-                options[i].classList.remove("selected");
-            }
-            button.classList.add("selected");
-            selectedScores[questionNum] = profileValue;
-        }
+                // Clear error look if resolved
+                document.getElementById('error-box').style.display = 'none';
+            });
+        });
 
-        function calculateRiskProfile() {
-            var counts = { conservative: 0, moderate: 0, aggressive: 0 };
-            var totalQuestions = 3;
-            
-            for(var keys in selectedScores) {
-                counts[selectedScores[keys]]++;
-            }
-            
-            var resultDiv = document.getElementById("quiz-result");
-            resultDiv.style.display = "block";
+        function evaluateQuiz() {
+            const totalQuestions = 6;
+            const errorBox = document.getElementById('error-box');
+            const resultDisplay = document.getElementById('result-display');
 
-            if(Object.keys(selectedScores).length < totalQuestions) {
-                resultDiv.style.backgroundColor = "#ffeaa7";
-                resultDiv.style.color = "#d63031";
-                resultDiv.innerHTML = "⚠️ Please answer all questions to view your profile allocation recommendation!";
+            // Verification check
+            if (Object.keys(answers).length < totalQuestions) {
+                errorBox.style.display = 'block';
+                window.scrollTo({ top: errorBox.offsetTop - 100, behavior: 'smooth' });
                 return;
             }
 
-            if(counts.aggressive >= 2) {
-                resultDiv.style.backgroundColor = "#dff9fb";
-                resultDiv.style.color = "#0a3d62";
-                resultDiv.innerHTML = "🚀 Profile Match: AGGRESSIVE INVESTOR.<br><br>Recommended Assets: Flexi Cap Funds, Mid Cap Funds, Small Cap Funds, and Market Index Funds. You are structurally comfortable with short-term market corrections to achieve maximum compounding growth over long horizons.";
-            } else if(counts.conservative >= 2) {
-                resultDiv.style.backgroundColor = "#f1f2f6";
-                resultDiv.style.color = "#2f3542";
-                resultDiv.innerHTML = "🛡️ Profile Match: CONSERVATIVE INVESTOR.<br><br>Recommended Assets: Liquid Funds, Debt Funds, and Conservative Hybrid options. Capital stability and low, predictable volatility parameters are your key priorities.";
-            } else {
-                resultDiv.style.backgroundColor = "#e8f8f5";
-                resultDiv.style.color = "#117a65";
-                resultDiv.innerHTML = "⚖️ Profile Match: MODERATE INVESTOR.<br><br>Recommended Assets: Balanced Advantage Funds, Aggressive Hybrid Allocations, and Large Cap Index Funds. You prefer a clean architecture balancing safety alongside steady market growth.";
+            // Sum up choices array scores
+            let finalCumulativeScore = 0;
+            for (let q in answers) {
+                finalCumulativeScore += answers[q];
             }
+
+            let profileName = "";
+            let profileDescription = "";
+            let allocations = [];
+
+            // Multi-Tier Scoring Evaluation Engine
+            if (finalCumulativeScore <= 8) {
+                profileName = "🛡️ Pure Capital Conservative Investor";
+                profileDescription = "Your primary concern is protecting your capital, even if it means missing out on higher returns. You have zero tolerance for volatility and prefer highly predictable, rock-solid structures. Inflation is your biggest long-term risk, but capital safety comes first.";
+                allocations = ["80% Liquid & Overnight Funds", "10% Corporate Arbitrage", "10% Sovereign Gold Bonds"];
+            } else if (finalCumulativeScore >= 9 && finalCumulativeScore <= 13) {
+                profileName = "⚖️ Cautious Moderate Investor";
+                profileDescription = "You are looking for steady income streams with a small touch of equity growth to beat basic inflation. You prefer your principal values to remain mostly flat and stable, but you can tolerate small, brief market dips if they help improve your returns over time.";
+                allocations = ["50% High-Grade Debt Funds", "30% Balanced Advantage Funds", "20% Large-Cap Index Allocations"];
+            } else if (finalCumulativeScore >= 14 && finalCumulativeScore <= 18) {
+                profileName = "📈 Balanced Growth Seeker";
+                profileDescription = "You want a balanced mix of steady returns and long-term capital growth. You understand that equity markets drop during economic corrections, and you are comfortable waiting out these cycles over a 5-year timeline to achieve solid, compounded wealth creation.";
+                allocations = ["40% Flexi-Cap Mutual Funds", "30% Large & Mid-Cap Funds", "20% Corporate Debt Strategies", "10% Multi-Asset Hybrid Allocations"];
+            } else if (finalCumulativeScore >= 19 && finalCumulativeScore <= 22) {
+                profileName = "🚀 High-Growth Aggressive Investor";
+                profileDescription = "Your focus is on maximizing your long-term wealth, and you are comfortable taking on significant market risk to get there. You have a long time horizon (over 7 years) and look at sudden market corrections as great opportunities to invest more capital at lower prices.";
+                allocations = ["40% Diversified Flexi-Cap Funds", "30% Mid-Cap Growth Funds", "20% Small-Cap Strategies", "10% International/Thematic Funds"];
+            } else {
+                profileName = "🔥 Alpha Aggressive Wealth Maximizer";
+                profileDescription = "You want to maximize your returns across the board and are comfortable handling extreme market volatility. Backed by highly secure income streams and a very long time horizon, you are fully focused on high-conviction equity strategies to build maximum generational wealth.";
+                allocations = ["40% Small-Cap Strategies", "30% Mid-Cap Value Funds", "20% Sector/Thematic Equities", "10% Focused Flexi-Cap Funds"];
+            }
+
+            // Render details to the user
+            document.getElementById('profile-title').innerHTML = profileName;
+            document.getElementById('profile-desc').innerHTML = profileDescription;
+
+            const tagsContainer = document.getElementById('allocation-tags-container');
+            tagsContainer.innerHTML = "";
+            allocations.forEach(alloc => {
+                const span = document.createElement('span');
+                span.className = 'allocation-tag';
+                span.innerText = alloc;
+                tagsContainer.appendChild(span);
+            });
+
+            // Set up the custom WhatsApp message link
+            const whatsappText = encodeURIComponent(`Hi Prajith, I just completed my Risk Profiler Quiz on your website. My score is ${finalCumulativeScore}, matching the profile: ${profileName}. Let's discuss my custom investment blueprint!`);
+            document.getElementById('whatsapp-share-btn').href = `https://wa.me/917994653546?text=${whatsappText}`;
+
+            // Reveal result card smooth view shift
+            resultDisplay.style.display = 'block';
+            window.scrollTo({ top: resultDisplay.offsetTop - 50, behavior: 'smooth' });
         }
     </script>
 </body>
 </html>
-                            
-  
