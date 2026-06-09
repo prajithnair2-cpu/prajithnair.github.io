@@ -142,7 +142,7 @@
             gap: 2.5rem;
         }
 
-        /* Core Feature Cards - Enhanced with Icons */
+        /* Core Feature Cards */
         .card {
             background-color: var(--white);
             padding: 2.5rem;
@@ -150,7 +150,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.03);
             transition: all 0.3s ease;
             border: 1px solid rgba(0,0,0,0.02);
-            text-align: center; /* Center everything in the card */
+            text-align: center;
         }
 
         .card:hover {
@@ -158,12 +158,11 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.08);
         }
 
-        /* Styling for the new small icons */
         .card img.icon {
             display: block;
             max-width: 50px;
             max-height: 50px;
-            margin: 0 auto 1.5rem auto; /* Centered with bottom margin */
+            margin: 0 auto 1.5rem auto;
             opacity: 0.9;
         }
 
@@ -181,26 +180,89 @@
         .goal-card {
             background: var(--white);
             border-left: 5px solid var(--accent);
-            text-align: left; /* Keep text left-aligned for goal cards */
+            text-align: left;
         }
         
         .goal-card img.icon {
-            margin: 0 0 1.5rem 0; /* Keep icon left-aligned for goal cards */
+            margin: 0 0 1.5rem 0;
+        }
+
+        /* NEW Interactive Blog Engine System */
+        .blog-section {
+            background-color: #ffffff;
+        }
+        .blog-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+        .tab-btn {
+            background: var(--light);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .blog-content {
+            background: var(--light);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.02);
+            display: none;
+        }
+        .blog-content.active {
+            display: block;
+        }
+        .blog-content h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .blog-content p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            color: #333;
+        }
+        .blog-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+        .formula-box {
+            background: #e2e8f0;
+            padding: 1.5rem;
+            border-left: 4px solid var(--secondary);
+            border-radius: 6px;
+            margin: 1.5rem 0;
+            font-family: monospace;
+            font-size: 1.1rem;
+            text-align: center;
         }
 
         /* Advisor Trust Profile Section */
         .advisor-section {
-            background-color: var(--white);
+            background-color: #f1f5f9;
         }
 
         .advisor-container {
             display: flex;
             align-items: center;
             gap: 4rem;
-            background: var(--light);
+            background: var(--white);
             padding: 3rem;
             border-radius: 16px;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
         }
 
         .advisor-image {
@@ -310,6 +372,7 @@
             .grid { grid-template-columns: 1fr; }
             header { flex-direction: column; gap: 1rem; text-align: center; }
             .whatsapp-float { bottom: 20px; right: 20px; padding: 10px 18px; font-size: 0.9rem; }
+            .blog-content { padding: 1.5rem; }
         }
     </style>
 </head>
@@ -318,18 +381,18 @@
     <!-- Header Navigation -->
     <header>
         <div class="logo">
-            PRAJITH PV
+            YOUR_NAME
             <span>Authorized NJ Wealth Distributor</span>
         </div>
         <a href="tel:+91YOUR_PHONE_NUMBER" class="btn" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Call Advisor</a>
     </header>
 
-    <!-- Hero Hero Section -->
+    <!-- Hero Section -->
     <section class="hero">
         <h1>Don't Just Save Your Money. Multiply It.</h1>
         <p>Stop letting inflation eat your hard-earned savings. Invest in expert-managed Mutual Funds through India's premier wealth tech platform.</p>
         <a href="https://www.njwebdesk.in/ClientDesk/index.aspx?pcode=YOUR_NJ_WEALTH_ID" target="_blank" class="btn">Open Free Investment Account</a>
-        <a href="#benefits" class="btn btn-outline">Learn Benefits First</a>
+        <a href="#academy" class="btn btn-outline">Read Investor Academy</a>
     </section>
 
     <!-- Why Mutual Funds Section -->
@@ -338,22 +401,16 @@
         <p class="section-subtitle">Traditional savings routes fall short. Here is why the modern market relies on Mutual Funds.</p>
         <div class="grid">
             <div class="card">
-                <!-- Icon Placeholder 1: Beat Inflation -->
-                <!-- Replace with URL for: an upward trending graph fighting a downward arrow -->
                 <img src="https://img.icons8.com/fluency/96/inflation.png" alt="Inflation Icon" class="icon">
                 <h3>Beat High Inflation</h3>
                 <p>Idle cash loses purchasing power daily. Well-allocated equity and debt Mutual Funds aim for historic compounding returns that systematically defeat inflation over time.</p>
             </div>
             <div class="card">
-                <!-- Icon Placeholder 2: Diversification -->
-                <!-- Replace with URL for: a pie chart or a basket with mixed fruits/assets -->
                 <img src="https://img.icons8.com/fluency/96/pie-chart-report.png" alt="Diversification Icon" class="icon">
                 <h3>True Diversification</h3>
                 <p>Never put all your eggs in one basket. One single mutual fund spreads your money across dozens of India’s top companies, keeping your overall risk well-managed.</p>
             </div>
             <div class="card">
-                <!-- Icon Placeholder 3: Expert Managed -->
-                <!-- Replace with URL for: a person in a suit analyzed data/graphs -->
                 <img src="https://img.icons8.com/fluency/96/manager.png" alt="Expert Icon" class="icon">
                 <h3>Managed by Pros</h3>
                 <p>You don't need to watch complex stock tickers all day. Elite, certified fund managers handle the constant balancing, market analytics, and strategy execution for you.</p>
@@ -368,22 +425,16 @@
             <p class="section-subtitle">Don't invest blindly. Align your money with your clear, real-world life goals using simple SIPs.</p>
             <div class="grid">
                 <div class="card goal-card">
-                    <!-- Icon Placeholder 4: Secure Retirement -->
-                    <!-- Replace with URL for: an elderly couple relaxing near a beach or house -->
                     <img src="https://img.icons8.com/fluency/96/beach-umbrella.png" alt="Retirement Icon" class="icon">
                     <h3>Secure Retirement</h3>
                     <p>Build an independent, stress-free corpus so you can maintain your comfortable lifestyle without relying on anyone during your golden years.</p>
                 </div>
                 <div class="card goal-card">
-                    <!-- Icon Placeholder 5: Education -->
-                    <!-- Replace with URL for: a graduation cap and books -->
                     <img src="https://img.icons8.com/fluency/96/graduation-cap.png" alt="Education Icon" class="icon">
                     <h3>Child Education & Marriage</h3>
                     <p>Be ready for soaring higher education costs globally. Start an early SIP to fund your child's major career dreams stress-free.</p>
                 </div>
                 <div class="card goal-card">
-                    <!-- Icon Placeholder 6: Tax Saving (replaces piggy bank idea here) -->
-                    <!-- Replace with URL for: a piggy bank with a calculator or shield -->
                     <img src="https://img.icons8.com/fluency/96/piggy-bank.png" alt="Piggy Bank Tax Saving Icon" class="icon">
                     <h3>Smart Tax Saving (ELSS)</h3>
                     <p>Save substantial taxes legally under Section 80C while simultaneously growing your wealth via equity markets with the shortest lock-in period available.</p>
@@ -392,15 +443,74 @@
         </div>
     </section>
 
+    <!-- NEW INTERACTIVE KNOWLEDGE BLOG ENGINE -->
+    <section id="academy" class="blog-section container">
+        <h2>Smart Investor Knowledge Academy</h2>
+        <p class="section-subtitle">Click the tabs below to clear your doubts and learn the mechanics of mathematical wealth creation.</p>
+        
+        <div class="blog-tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'how-mf-works')">How Mutual Funds Grow Money</button>
+            <button class="tab-btn" onclick="openTab(event, 'inflation-trap')">The Silent Inflation Trap</button>
+            <button class="tab-btn" onclick="openTab(event, 'fd-safety')">Are FDs Truly Safer?</button>
+            <button class="tab-btn" onclick="openTab(event, 'why-advisor')">Direct Plans vs. ARN Advisors</button>
+        </div>
+
+        <!-- Tab 1 -->
+        <div id="how-mf-works" class="blog-content active">
+            <h3>How Exactly Does a Mutual Fund Create Wealth?</h3>
+            <p>A mutual fund pools money from thousands of investors and systematically disperses it into high-growth assets like diversified corporate stocks, bonds, and government securities under expert guidelines.</p>
+            <p>Your holdings are quantified by **NAV (Net Asset Value)**, which updates daily. Returns are generated via three clear channels:</p>
+            <ul>
+                <li><strong>Capital Appreciation:</strong> When the companies inside your fund scale up operations, share prices escalate, increasing your NAV.</li>
+                <li><strong>Dividend Reinvestment:</strong> Cash rewards distributed by profitable companies are automatically funneled back to purchase more fund units.</li>
+                <li><strong>The Mathematical Law of Compounding:</strong> Returns start earning returns on top of themselves.</li>
+            </ul>
+            <p>The pure mathematical curve behind your future portfolio value relies on the ultimate compound progression formula:</p>
+            <div class="formula-box">$$A = P(1 + r)^n$$</div>
+            <p>Where <em>A</em> is your ultimate future net asset value, <em>P</em> represents your initial starting capital base, <em>r</em> is your annual compounded index returns, and <em>n</em> dictates the absolute duration of years left untouched.</p>
+        </div>
+
+        <!-- Tab 2 -->
+        <div id="inflation-trap" class="blog-content">
+            <h3>The Silent Wealth Destroyer: The 6% Inflation Trap</h3>
+            <p>Imagine a product costing ₹100 today. Ten years later, it touches ₹180. The product is identical, but your money has permanently lost its purchase efficiency. This hidden erosion is inflation.</p>
+            <p>If you keep ₹1,00,000 cash under a mattress or inside traditional accounts yielding under 4%, you are mathematically guaranteed to lose long-term purchasing power against an average core inflation index of 6%.</p>
+            <ul>
+                <li><strong>Savings Accounts:</strong> Yield ~3-4%. Net outcome: Defeated by inflation.</li>
+                <li><strong>Traditional FDs:</strong> Yield ~6-7%. Net outcome: Barely breaking even after local capital taxation thresholds.</li>
+            </ul>
+            <p>Diversified Equity Mutual Funds expose your money directly to structural economic growth, historically driving performance metrics that sustainably outpace the annual cost of living.</p>
+        </div>
+
+        <!-- Tab 3 -->
+        <div id="fd-safety" class="blog-content">
+            <h3>Are FDs Safer? Can You Lose Money in Mutual Funds?</h3>
+            <p>The honest, transparent answer is: <strong>In the short run, yes, equity markets experience temporary market corrections.</strong> If you extract capital during a panic drop, you locking in actual loss. However, over extended multi-year cycles, broad stock markets historically normalize and build upwards.</p>
+            <p>Fixed Deposits protect paper capital figures, but fail to build substantial life-long prosperity. They protect capital numbers, not purchasing power.</p>
+            <p><strong>The Ultimate Combined Strategy:</strong> Use Fixed Deposits for immediate short-term survival needs (6-12 months emergency cash reserves) and deploy structured Mutual Fund SIPs to tackle major long-term milestones like retirement and child education costs.</p>
+        </div>
+
+        <!-- Tab 4 -->
+        <div id="why-advisor" class="blog-content">
+            <h3>Direct Self-Investing vs. Consulting an AMFI ARN Holder</h3>
+            <p>While smartphone apps make it trivial to buy "Direct Plans" directly from fund houses to save minor basis points on expense ratios, the execution requires severe expertise. You must independently allocate assets, constantly rebalance, run intense risk metrics, and maintain behavioral discipline during terrifying market crashes.</p>
+            <p>An AMFI-registered <strong>ARN Holder</strong> functions as your long-term behavioral coach. The greatest risk to an investor isn't the stock market; it is emotional panic decisions.</p>
+            <ul>
+                <li><strong>Avoid Emotional Mistakes:</strong> Distributors block you from aggressive buying during extreme highs and panic liquidations during healthy market lows.</li>
+                <li><strong>Suitability over Popularity:</strong> We analyze personal income capacities and time horizons rather than following speculative social media stock tips.</li>
+                <li><strong>Complete Life Goal Architecture:</strong> Custom structuring tracking metrics through premium ecosystems like the NJ Wealth network dashboards.</li>
+            </ul>
+        </div>
+    </section>
+
     <!-- Trust / Biography Section -->
     <section class="advisor-section container">
         <h2>Your Trusted Financial Partner</h2>
         <p class="section-subtitle">Investing isn't just about platforms; it's about reliable guidance.</p>
         <div class="advisor-container">
-            <!-- Tip: Swap out the Unsplash URL with a direct link to your photo -->
             <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80" alt="Your Advisor Portrait" class="advisor-image">
             <div class="advisor-details">
-                <h3>PRAJITH PV</h3>
+                <h3>YOUR_NAME</h3>
                 <div class="advisor-title">Mutual Fund Consultant & Wealth Management Expert</div>
                 <div class="arn-badge">AMFI Registered ARN: YOUR_ARN_NUMBER_HERE</div>
                 <p>As an authorized NJ Wealth Partner, I focus on helping families, professionals, and businesses achieve concrete financial freedom. Leveraging NJ Wealth's state-of-the-art technological framework, my clients enjoy zero-hassle digital onboarding, robust multi-asset transaction features, and comprehensive tracking dashboards.</p>
@@ -416,7 +526,6 @@
     </section>
 
     <!-- Floating WhatsApp Link Button -->
-    <!-- Replace YOUR_PHONE_NUMBER with your country code + phone number without spaces or + symbols -->
     <a href="https://wa.me/91YOUR_PHONE_NUMBER?text=Hi,%20I've%20visited%20your%20website%20and%20want%20to%20know%20more%20about%20starting%20a%20Mutual%20Fund%20investment." class="whatsapp-float" target="_blank">
         <svg style="width:20px; height:20px; fill:currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.966 0c3.178.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.239 3.48 8.421-.003 6.615-5.34 11.962-11.909 11.962-2.005-.001-3.973-.507-5.729-1.474L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.747 1.451 5.436 0 9.86-4.413 9.863-9.84.001-2.63-1.019-5.101-2.871-6.957C16.478 1.952 14.023 1.3 11.968 1.3c-5.438 0-9.863 4.414-9.866 9.84-.001 1.677.452 3.315 1.312 4.742L2.39 20.354l4.257-1.2z"/></svg>
         Chat on WhatsApp
@@ -424,12 +533,28 @@
 
     <!-- Footer -->
     <footer>
-        <p>© 2026 PRAJITH PV. All Rights Reserved.</p>
+        <p>© 2026 YOUR_NAME. All Rights Reserved.</p>
         <p style="margin-top: 0.3rem; opacity: 0.7;">NJ Wealth Authorized Network Partner | Office Location: India</p>
         <div class="disclaimer">
             <strong>Statutory Risk Disclaimer:</strong> Mutual Fund investments are subject to market risks. Please read all scheme-related instructions, offer documents, and terms carefully before dedicating capital. Past historical performance metrics do not offer concrete guarantees of equivalent future yields.
         </div>
     </footer>
 
+    <!-- JS for Interactive Blog Tabs -->
+    <script>
+        function openTab(evt, tabId) {
+            var i, blogContent, tabLinks;
+            blogContent = document.getElementsByClassName("blog-content");
+            for (i = 0; i < blogContent.length; i++) {
+                blogContent[i].style.display = "none";
+            }
+            tabLinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabId).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
 </body>
 </html>
