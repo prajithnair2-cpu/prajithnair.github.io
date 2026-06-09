@@ -187,7 +187,33 @@
             margin: 0 0 1.5rem 0;
         }
 
-        /* NEW Interactive Blog Engine System */
+        /* Tables style layout */
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        th {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        /* ONE BY ONE BLOG SLIDER & INDICATION ARCHITECTURE */
         .blog-section {
             background-color: #ffffff;
         }
@@ -202,15 +228,18 @@
             background: var(--light);
             color: var(--primary);
             border: 2px solid var(--primary);
-            padding: 0.7rem 1.5rem;
+            padding: 0.5rem 1.2rem;
             border-radius: 25px;
-            cursor: pointer;
             font-weight: 600;
+            font-size: 0.9rem;
+            pointer-events: none; /* Controlled via slider next/prev mechanics */
+            opacity: 0.5;
             transition: all 0.3s ease;
         }
-        .tab-btn.active, .tab-btn:hover {
+        .tab-btn.active {
             background: var(--primary);
             color: var(--white);
+            opacity: 1;
         }
         .blog-content {
             background: var(--light);
@@ -226,6 +255,12 @@
             color: var(--primary);
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
+        }
+        .blog-content h4 {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
         }
         .blog-content p {
             margin-bottom: 1.2rem;
@@ -248,6 +283,56 @@
             font-family: monospace;
             font-size: 1.1rem;
             text-align: center;
+        }
+
+        /* INTERACTIVE RISK PROFILER QUIZ ARCHITECTURE */
+        .quiz-container {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            margin-top: 2rem;
+        }
+        .quiz-question {
+            font-weight: 600;
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            margin-top: 1.5rem;
+        }
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+        .quiz-option {
+            background: var(--light);
+            border: 1px solid #cbd5e1;
+            padding: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+            font-size: 1rem;
+        }
+        .quiz-option:hover {
+            background: #e2e8f0;
+            border-color: var(--secondary);
+        }
+        .quiz-option.selected {
+            background: var(--secondary);
+            color: var(--white);
+            border-color: var(--secondary);
+        }
+        #quiz-result {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            display: none;
+            line-height: 1.5;
         }
 
         /* Advisor Trust Profile Section */
@@ -378,24 +463,21 @@
 </head>
 <body>
 
-    <!-- Header Navigation -->
     <header>
         <div class="logo">
-            YOUR_NAME
+                PRAJITH PV 
             <span>Authorized NJ Wealth Distributor</span>
         </div>
         <a href="tel:+91YOUR_PHONE_NUMBER" class="btn" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Call Advisor</a>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <h1>Don't Just Save Your Money. Multiply It.</h1>
         <p>Stop letting inflation eat your hard-earned savings. Invest in expert-managed Mutual Funds through India's premier wealth tech platform.</p>
         <a href="https://www.njwebdesk.in/ClientDesk/index.aspx?pcode=YOUR_NJ_WEALTH_ID" target="_blank" class="btn">Open Free Investment Account</a>
-        <a href="#academy" class="btn btn-outline">Read Investor Academy</a>
+        <a href="#academy" class="btn btn-outline">Explore Academy & Tools</a>
     </section>
 
-    <!-- Why Mutual Funds Section -->
     <section id="benefits" class="container">
         <h2>Why Shift to Mutual Funds?</h2>
         <p class="section-subtitle">Traditional savings routes fall short. Here is why the modern market relies on Mutual Funds.</p>
@@ -418,7 +500,6 @@
         </div>
     </section>
 
-    <!-- Goal Based Investing Section -->
     <section class="goals-section">
         <div class="container">
             <h2>Invest For What Matters Most</h2>
@@ -443,117 +524,326 @@
         </div>
     </section>
 
-    <!-- NEW INTERACTIVE KNOWLEDGE BLOG ENGINE -->
     <section id="academy" class="blog-section container">
         <h2>Smart Investor Knowledge Academy</h2>
-        <p class="section-subtitle">Click the tabs below to clear your doubts and learn the mechanics of mathematical wealth creation.</p>
+        <p class="section-subtitle">Step-by-step masterclass modules tracking through inflation, allocation systems, and fund mechanics.</p>
         
         <div class="blog-tabs">
-            <button class="tab-btn active" onclick="openTab(event, 'how-mf-works')">How Mutual Funds Grow Money</button>
-            <button class="tab-btn" onclick="openTab(event, 'inflation-trap')">The Silent Inflation Trap</button>
-            <button class="tab-btn" onclick="openTab(event, 'fd-safety')">Are FDs Truly Safer?</button>
-            <button class="tab-btn" onclick="openTab(event, 'why-advisor')">Direct Plans vs. ARN Advisors</button>
+            <button class="tab-btn active" id="tab-indicator-0">Chapter 1</button>
+            <button class="tab-btn" id="tab-indicator-1">Chapter 2</button>
+            <button class="tab-btn" id="tab-indicator-2">Chapter 3</button>
+            <button class="tab-btn" id="tab-indicator-3">Chapter 4</button>
+            <button class="tab-btn" id="tab-indicator-4">Chapter 5</button>
         </div>
 
-        <!-- Tab 1 -->
-        <div id="how-mf-works" class="blog-content active">
-            <h3>How Exactly Does a Mutual Fund Create Wealth?</h3>
-            <p>A mutual fund pools money from thousands of investors and systematically disperses it into high-growth assets like diversified corporate stocks, bonds, and government securities under expert guidelines.</p>
-            <p>Your holdings are quantified by **NAV (Net Asset Value)**, which updates daily. Returns are generated via three clear channels:</p>
-            <ul>
-                <li><strong>Capital Appreciation:</strong> When the companies inside your fund scale up operations, share prices escalate, increasing your NAV.</li>
-                <li><strong>Dividend Reinvestment:</strong> Cash rewards distributed by profitable companies are automatically funneled back to purchase more fund units.</li>
-                <li><strong>The Mathematical Law of Compounding:</strong> Returns start earning returns on top of themselves.</li>
-            </ul>
-            <p>The pure mathematical curve behind your future portfolio value relies on the ultimate compound progression formula:</p>
-            <div class="formula-box">$$A = P(1 + r)^n$$</div>
-            <p>Where <em>A</em> is your ultimate future net asset value, <em>P</em> represents your initial starting capital base, <em>r</em> is your annual compounded index returns, and <em>n</em> dictates the absolute duration of years left untouched.</p>
+        <div class="blog-slider-container">
+            
+            <div class="blog-content active">
+                <h3>1. How Mutual Funds Create Wealth Year After Year</h3>
+                <p>A mutual fund collects capital from thousands of investors and pools it into a unified investment fund managed by licensed professionals to buy premium underlying assets like equity stocks, corporate bonds, and government securities.</p>
+                <p>Every dynamic element shifts according to your daily updated <strong>Net Asset Value (NAV)</strong>, representing the value of one independent unit of the fund. Returns compound through three distinct methods:</p>
+                <ul>
+                    <li><strong>Capital Appreciation:</strong> Corporate profits increase stock prices, pushing your fund's NAV upward.</li>
+                    <li><strong>Dividend & Interest Inflow:</strong> Cash dividends are automatically reinvested into the fund matrix to generate secondary compound cycles.</li>
+                    <li><strong>Compounding Acceleration:</strong> Growth calculations continuously multiply both original allocations and preceding capital gains.</li>
+                </ul>
+                <div class="formula-box">Wealth Progression Formula: A = P(1 + r)^n</div>
+                <p>A structured SIP investment of just ₹5,000 every month over a 20-year span at an average annual return projection of 12% can transform a ₹12,000,000 investment footprint into an estimated asset value exceeding ₹45,00,000. Success relies heavily on staying focused through changing market environments.</p>
+            </div>
+
+            <div class="blog-content">
+                <h3>2. What Is Inflation and How Can Mutual Funds Help Beat It?</h3>
+                <p>Inflation is the silent destroyer of raw purchasing power. Imagine that today you can buy a basket of commodities for ₹100; ten years later, due to inflation, that same basket costs ₹180. Your money hasn't changed on paper, but its real value has dropped.</p>
+                <p>If consumer prices rise at an average rate of 6% annually, stagnant capital positions left in cash or traditional accounts lose real value over time. Let's look at how typical assets hold up against inflation:</p>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Asset Class Type</th>
+                                <th>Average Expected Return Metric</th>
+                                <th>Real Inflation Adjusted Outcome (6% Inflation Base)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Savings Account Balance</td>
+                                <td>3% - 4%</td>
+                                <td><strong>Negative Real Growth:</strong> Capital degrades in total real value.</td>
+                            </tr>
+                            <tr>
+                                <td>Standard Fixed Deposits</td>
+                                <td>6% - 7%</td>
+                                <td><strong>Stagnant Position:</strong> Barely matches price trends after counting net taxes.</td>
+                            </tr>
+                            <tr>
+                                <td>Equity & Index Mutual Funds</td>
+                                <td>11% - 14% (Variable)</td>
+                                <td><strong>Positive Real Growth:</strong> Capital expands faster than the cost of living.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Diversified mutual funds allow regular investors to participate directly in corporate expansion and market index recoveries, helping to protect your wealth from inflation over the long term.</p>
+            </div>
+
+            <div class="blog-content">
+                <h3>3. Who Should Invest? Custom Goal & Income Allocation Matrices</h3>
+                <p>There is no single "best" mutual fund for everyone; proper selection aligns with your life stage, career, and income levels.</p>
+                
+                <h4>1. Structural Capital Allocations by Income Tier</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Monthly Personal Net Income Baseline</th>
+                                <th>Suggested Monthly SIP Allocation Range</th>
+                                <th>Strategic Investment Objective</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>₹20,000</td>
+                                <td>₹1,000 - ₹2,000</td>
+                                <td>Developing baseline financial discipline and index habits.</td>
+                            </tr>
+                            <tr>
+                                <td>₹50,000</td>
+                                <td>₹5,000 - ₹10,000</td>
+                                <td>Targeted planning for medium-term asset benchmarks.</td>
+                            </tr>
+                            <tr>
+                                <td>₹1,00,000</td>
+                                <td>₹10,000 - ₹25,000</td>
+                                <td>Aggressive expansion across flexi-cap and equity-oriented portfolios.</td>
+                            </tr>
+                            <tr>
+                                <td>₹2,00,000+</td>
+                                <td>₹25,000+</td>
+                                <td>Comprehensive multi-asset wealth maximization architectures.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4>2. Structural Lifespan Selection Profiles</h4>
+                <ul>
+                    <li><strong>Students & Young Professionals:</strong> High-risk capacity with decades ahead. Focus should be on long-term wealth creation via Flexi Cap, Large & Mid Cap, and Index Funds.</li>
+                    <li><strong>Salaried Employees & Families:</strong> Balancing commitments. Focus on specific timelines for children's higher education, home purchases, and tax savings (ELSS).</li>
+                    <li><strong>Business Owners & Self-Employed:</strong> Income may fluctuate. Needs a mix of Multi-Cap growth funds and high-liquidity Liquid Funds for cash reserves.</li>
+                    <li><strong>Retired Individuals:</strong> Capital preservation is the highest priority. Rely on stable Debt mutual funds and Conservative Hybrid options to support steady income safely.</li>
+                </ul>
+            </div>
+
+            <div class="blog-content">
+                <h3>4. Direct Funds vs. Partnering With an ARN Advisor</h3>
+                <p>Smartphones make it easy to buy a direct mutual fund instantly, but choosing funds is only a tiny part of real financial planning. Let's compare investing completely on your own versus tracking goals with an AMFI-registered ARN consultant:</p>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Core Service Parameter</th>
+                                <th>Direct DIY Route</th>
+                                <th>Consulting an ARN Holder / Advisor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Expense Costs</strong></td>
+                                <td>Slightly Lower (No distributor commissions)</td>
+                                <td>Standard (Includes distributor fees)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Portfolio Management</strong></td>
+                                <td>You must research, rebalance, and monitor on your own</td>
+                                <td>Fully managed, continuously tracked asset allocation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Behavioral Support</strong></td>
+                                <td>None (Easy to panic and sell during market corrections)</td>
+                                <td>High guidance to keep you calm and focused on goals</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Goal Mapping</strong></td>
+                                <td>Self-calculated metrics</td>
+                                <td>Structured target tracking (Retirement, Education, etc.)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>The Real Question to Ask Yourself:</strong> <em>"Do I have the time, deep data access, and emotional discipline to manage my entire family portfolio through market crashes without expert confirmation?"</em> If no, working with an advisor can help prevent costly emotional mistakes.</p>
+            </div>
+
+            <div class="blog-content">
+                <h3>5. Interactive Investor Risk Profiler</h3>
+                <p>Before allocating capital, you need to understand your true psychological risk tolerance. Take our interactive quiz to discover your ideal fund profile:</p>
+                
+                <div class="quiz-container">
+                    <div class="quiz-question">1. If your investment values decline by 10% during a sudden market correction, what is your initial reaction?</div>
+                    <div class="quiz-options">
+                        <button class="quiz-option" onclick="selectOption(this, 1, 'conservative')">Panic immediately and liquidate assets to stop further loss.</button>
+                        <button class="quiz-option" onclick="selectOption(this, 1, 'moderate')">Keep the position active and wait calmly for market recovery.</button>
+                        <button class="quiz-option" onclick="selectOption(this, 1, 'aggressive')">View it as a discount window and aggressively deploy more capital.</button>
+                    </div>
+
+                    <div class="quiz-question">2. Which investment philosophy best describes your financial goal?</div>
+                    <div class="quiz-options">
+                        <button class="quiz-option" onclick="selectOption(this, 2, 'conservative')">Absolute safety of capital is my highest priority.</button>
+                        <button class="quiz-option" onclick="selectOption(this, 2, 'moderate')">A balanced mix of steady security and moderate growth.</button>
+                        <button class="quiz-option" onclick="selectOption(this, 2, 'aggressive')">Maximum long-term compounding, accepting short-term volatility.</button>
+                    </div>
+
+                    <div class="quiz-question">3. What is your ideal investment time horizon for this capital?</div>
+                    <div class="quiz-options">
+                        <button class="quiz-option" onclick="selectOption(this, 3, 'conservative')">Short term: Under 2 years.</button>
+                        <button class="quiz-option" onclick="selectOption(this, 3, 'moderate')">Medium term: Between 3 to 5 years.</button>
+                        <button class="quiz-option" onclick="selectOption(this, 3, 'aggressive')">Long term: Beyond 7 to 10+ years.</button>
+                    </div>
+
+                    <button class="btn" style="width: 100%; margin-top: 1rem;" onclick="calculateRiskProfile()">Calculate My Risk Profile</button>
+                    
+                    <div id="quiz-result"></div>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Tab 2 -->
-        <div id="inflation-trap" class="blog-content">
-            <h3>The Silent Wealth Destroyer: The 6% Inflation Trap</h3>
-            <p>Imagine a product costing ₹100 today. Ten years later, it touches ₹180. The product is identical, but your money has permanently lost its purchase efficiency. This hidden erosion is inflation.</p>
-            <p>If you keep ₹1,00,000 cash under a mattress or inside traditional accounts yielding under 4%, you are mathematically guaranteed to lose long-term purchasing power against an average core inflation index of 6%.</p>
-            <ul>
-                <li><strong>Savings Accounts:</strong> Yield ~3-4%. Net outcome: Defeated by inflation.</li>
-                <li><strong>Traditional FDs:</strong> Yield ~6-7%. Net outcome: Barely breaking even after local capital taxation thresholds.</li>
-            </ul>
-            <p>Diversified Equity Mutual Funds expose your money directly to structural economic growth, historically driving performance metrics that sustainably outpace the annual cost of living.</p>
-        </div>
-
-        <!-- Tab 3 -->
-        <div id="fd-safety" class="blog-content">
-            <h3>Are FDs Safer? Can You Lose Money in Mutual Funds?</h3>
-            <p>The honest, transparent answer is: <strong>In the short run, yes, equity markets experience temporary market corrections.</strong> If you extract capital during a panic drop, you locking in actual loss. However, over extended multi-year cycles, broad stock markets historically normalize and build upwards.</p>
-            <p>Fixed Deposits protect paper capital figures, but fail to build substantial life-long prosperity. They protect capital numbers, not purchasing power.</p>
-            <p><strong>The Ultimate Combined Strategy:</strong> Use Fixed Deposits for immediate short-term survival needs (6-12 months emergency cash reserves) and deploy structured Mutual Fund SIPs to tackle major long-term milestones like retirement and child education costs.</p>
-        </div>
-
-        <!-- Tab 4 -->
-        <div id="why-advisor" class="blog-content">
-            <h3>Direct Self-Investing vs. Consulting an AMFI ARN Holder</h3>
-            <p>While smartphone apps make it trivial to buy "Direct Plans" directly from fund houses to save minor basis points on expense ratios, the execution requires severe expertise. You must independently allocate assets, constantly rebalance, run intense risk metrics, and maintain behavioral discipline during terrifying market crashes.</p>
-            <p>An AMFI-registered <strong>ARN Holder</strong> functions as your long-term behavioral coach. The greatest risk to an investor isn't the stock market; it is emotional panic decisions.</p>
-            <ul>
-                <li><strong>Avoid Emotional Mistakes:</strong> Distributors block you from aggressive buying during extreme highs and panic liquidations during healthy market lows.</li>
-                <li><strong>Suitability over Popularity:</strong> We analyze personal income capacities and time horizons rather than following speculative social media stock tips.</li>
-                <li><strong>Complete Life Goal Architecture:</strong> Custom structuring tracking metrics through premium ecosystems like the NJ Wealth network dashboards.</li>
-            </ul>
+        <div style="display: flex; justify-content: space-between; margin-top: 2rem; gap: 15px;">
+            <button class="btn btn-outline" id="prev-blog-btn" onclick="changePost(-1)" style="color: var(--primary); border-color: var(--primary); flex: 1;">⬅️ Previous Chapter</button>
+            <button class="btn" id="next-blog-btn" onclick="changePost(1)" style="flex: 1;">Next Chapter ➡️</button>
         </div>
     </section>
 
-    <!-- Trust / Biography Section -->
     <section class="advisor-section container">
         <h2>Your Trusted Financial Partner</h2>
         <p class="section-subtitle">Investing isn't just about platforms; it's about reliable guidance.</p>
         <div class="advisor-container">
             <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80" alt="Your Advisor Portrait" class="advisor-image">
             <div class="advisor-details">
-                <h3>YOUR_NAME</h3>
+                <h3>PRAJITH PV</h3>
                 <div class="advisor-title">Mutual Fund Consultant & Wealth Management Expert</div>
                 <div class="arn-badge">AMFI Registered ARN: YOUR_ARN_NUMBER_HERE</div>
-                <p>As an authorized NJ Wealth Partner, I focus on helping families, professionals, and businesses achieve concrete financial freedom. Leveraging NJ Wealth's state-of-the-art technological framework, my clients enjoy zero-hassle digital onboarding, robust multi-asset transaction features, and comprehensive tracking dashboards.</p>
+                <p>As an authorized NJ Wealth Partner, I focus on helping families, professionals, and businesses achieve concrete financial freedom. Guided by structural AMFI framework ethics, my mission is to prevent emotional panic during market highs or market lows, ensuring your financial plan stays on track.</p>
             </div>
         </div>
     </section>
 
-    <!-- Final Call to Action -->
     <section class="cta-section">
         <h2>Take Control of Your Future Today</h2>
         <p>Onboard effortlessly in less than 5 minutes. Track your complete financial portfolio, investments, and capital completely online.</p>
         <a href="https://www.njwebdesk.in/ClientDesk/index.aspx?pcode=YOUR_NJ_WEALTH_ID" target="_blank" class="btn" style="font-size: 1.2rem; padding: 1rem 3rem;">Get Your Onboarding Link</a>
     </section>
 
-    <!-- Floating WhatsApp Link Button -->
-    <a href="https://wa.me/91YOUR_PHONE_NUMBER?text=Hi,%20I've%20visited%20your%20website%20and%20want%20to%20know%20more%20about%20starting%20a%20Mutual%20Fund%20investment." class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/917994653546?text=Hi,%20I've%20visited%20your%20website%20and%20want%20to%20know%20more%20about%20starting%20a%20Mutual%20Fund%20investment." class="whatsapp-float" target="_blank">
         <svg style="width:20px; height:20px; fill:currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.966 0c3.178.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.239 3.48 8.421-.003 6.615-5.34 11.962-11.909 11.962-2.005-.001-3.973-.507-5.729-1.474L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.747 1.451 5.436 0 9.86-4.413 9.863-9.84.001-2.63-1.019-5.101-2.871-6.957C16.478 1.952 14.023 1.3 11.968 1.3c-5.438 0-9.863 4.414-9.866 9.84-.001 1.677.452 3.315 1.312 4.742L2.39 20.354l4.257-1.2z"/></svg>
         Chat on WhatsApp
     </a>
 
-    <!-- Footer -->
     <footer>
-        <p>© 2026 YOUR_NAME. All Rights Reserved.</p>
+        <p>© PRAJITH PV. All Rights Reserved.</p>
         <p style="margin-top: 0.3rem; opacity: 0.7;">NJ Wealth Authorized Network Partner | Office Location: India</p>
         <div class="disclaimer">
             <strong>Statutory Risk Disclaimer:</strong> Mutual Fund investments are subject to market risks. Please read all scheme-related instructions, offer documents, and terms carefully before dedicating capital. Past historical performance metrics do not offer concrete guarantees of equivalent future yields.
         </div>
     </footer>
 
-    <!-- JS for Interactive Blog Tabs -->
     <script>
-        function openTab(evt, tabId) {
-            var i, blogContent, tabLinks;
-            blogContent = document.getElementsByClassName("blog-content");
-            for (i = 0; i < blogContent.length; i++) {
-                blogContent[i].style.display = "none";
+        // Sequential Blog Navigation Engine
+        let currentPostIndex = 0;
+        const posts = document.getElementsByClassName("blog-content");
+        
+        function updateBlogVisibility() {
+            // Hide all posts and remove active styles from indicators
+            for (let i = 0; i < posts.length; i++) {
+                posts[i].classList.remove("active");
+                posts[i].style.display = "none";
+                document.getElementById(`tab-indicator-${i}`).classList.remove("active");
             }
-            tabLinks = document.getElementsByClassName("tab-btn");
-            for (i = 0; i < tabLinks.length; i++) {
-                tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+            
+            // Show the active post and highlight its corresponding indicator step
+            posts[currentPostIndex].style.display = "block";
+            document.getElementById(`tab-indicator-${currentPostIndex}`).classList.add("active");
+
+            // Enable/disable navigation buttons based on boundaries
+            document.getElementById("prev-blog-btn").style.opacity = currentPostIndex === 0 ? "0.4" : "1";
+            document.getElementById("prev-blog-btn").style.pointerEvents = currentPostIndex === 0 ? "none" : "auto";
+            
+            const nextBtn = document.getElementById("next-blog-btn");
+            if (currentPostIndex === posts.length - 1) {
+                nextBtn.innerText = "Back to Start 🔄";
+            } else {
+                nextBtn.innerText = "Next Chapter ➡️";
             }
-            document.getElementById(tabId).style.display = "block";
-            evt.currentTarget.className += " active";
+        }
+
+        function changePost(direction) {
+            currentPostIndex += direction;
+            
+            // Loop back to the beginning if they hit "Next" on the final quiz page
+            if (currentPostIndex >= posts.length) {
+                currentPostIndex = 0;
+            }
+            // Block going past the first post backwards
+            if (currentPostIndex < 0) {
+                currentPostIndex = 0;
+            }
+            
+            updateBlogVisibility();
+            
+            // Smoothly snap the browser window back to the academy header so they can read fresh pages easily
+            document.getElementById("academy").scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize display configuration on startup
+        updateBlogVisibility();
+
+        // Quiz Selection Tracking Engine
+        var selectedScores = {};
+
+        function selectOption(button, questionNum, profileValue) {
+            // Deselect previous options from this specific question block
+            var options = button.parentElement.getElementsByClassName("quiz-option");
+            for(var i=0; i<options.length; i++) {
+                options[i].classList.remove("selected");
+            }
+            // Mark current option as selected
+            button.classList.add("selected");
+            selectedScores[questionNum] = profileValue;
+        }
+
+        function calculateRiskProfile() {
+            var counts = { conservative: 0, moderate: 0, aggressive: 0 };
+            var totalQuestions = 3;
+            
+            for(var keys in selectedScores) {
+                counts[selectedScores[keys]]++;
+            }
+            
+            var resultDiv = document.getElementById("quiz-result");
+            resultDiv.style.display = "block";
+
+            // Safety guard checking if all answers were selected
+            if(Object.keys(selectedScores).length < totalQuestions) {
+                resultDiv.style.backgroundColor = "#ffeaa7";
+                resultDiv.style.color = "#d63031";
+                resultDiv.innerHTML = "⚠️ Please answer all questions to view your profile allocation recommendation!";
+                return;
+            }
+
+            // Decide result baseline
+            if(counts.aggressive >= 2) {
+                resultDiv.style.backgroundColor = "#dff9fb";
+                resultDiv.style.color = "#0a3d62";
+                resultDiv.innerHTML = "🚀 Profile Match: AGGRESSIVE INVESTOR.<br><br>Recommended Assets: Flexi Cap Funds, Mid Cap Funds, Small Cap Funds, and Market Index Funds. You are structurally comfortable with short-term market corrections to achieve maximum compounding growth over long horizons.";
+            } else if(counts.conservative >= 2) {
+                resultDiv.style.backgroundColor = "#f1f2f6";
+                resultDiv.style.color = "#2f3542";
+                resultDiv.innerHTML = "🛡️ Profile Match: CONSERVATIVE INVESTOR.<br><br>Recommended Assets: Liquid Funds, Debt Funds, and Conservative Hybrid options. Capital stability and low, predictable volatility parameters are your key priorities.";
+            } else {
+                resultDiv.style.backgroundColor = "#e8f8f5";
+                resultDiv.style.color = "#117a65";
+                resultDiv.innerHTML = "⚖️ Profile Match: MODERATE INVESTOR.<br><br>Recommended Assets: Balanced Advantage Funds, Aggressive Hybrid Allocations, and Large Cap Index Funds. You prefer a clean architecture balancing safety alongside steady market growth.";
+            }
         }
     </script>
 </body>
